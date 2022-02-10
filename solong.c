@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:31:03 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/10 13:42:46 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/10 15:54:49 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	main(int ac, char	**av)
 		mlx.c = mlx_xpm_file_to_image(mlx.ptr, "./e/anemo.xpm", &mlx.x, &mlx.y);
 		mlx.w = mlx_xpm_file_to_image(mlx.ptr, "./e/wall.xpm", &mlx.x, &mlx.y);
 		mlx.p = mlx_xpm_file_to_image(mlx.ptr, "./e/xiao.xpm", &mlx.x, &mlx.y);
+		mlx.pl = mlx_xpm_file_to_image(mlx.ptr, "./e/xiaol.xpm", &mlx.x, &mlx.y);
 		mlx.e = mlx_xpm_file_to_image(mlx.ptr, "./e/dc.xpm", &mlx.x, &mlx.y);
 		mlx.ne = mlx_xpm_file_to_image(mlx.ptr, "./e/do.xpm", &mlx.x, &mlx.y);
 		print_map(&mlx);

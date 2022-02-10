@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:42 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/09 17:47:13 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/10 15:49:08 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ static void	loop(t_map *map, int fd, t_vars	*mlx)
 			exit (0);
 		}
 		map->check = check_elements(map->s1, map->a, mlx);
+		if (map->s2)
+			free(map->s2);
 		map->s2 = map->s1;
 		map->s1 = get_next_line(fd);
 	}
@@ -97,6 +99,7 @@ int	check_map(int fd, t_vars	*mlx)
 
 	mlx->coin = 0;
 	map.s1 = get_next_line(fd);
+	map.s2 = NULL;
 	map.a = ft_strlen(map.s1);
 	check_1(map.s1);
 	loop(&map, fd, mlx);
@@ -111,5 +114,7 @@ int	check_map(int fd, t_vars	*mlx)
 		write (2, "one or more ellements are missing", 34);
 		exit (0);
 	}
+	free(map.s2);
+	free(map.s1);
 	return (map.a);
 }

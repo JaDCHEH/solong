@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 15:37:27 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/09 19:35:50 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/10 15:55:04 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_vars
 	void	*ptr;
 	void	*win;
 	void	*p;
+	void	*pl;
 	void	*e;
 	void	*ne;
 	void	*c;
@@ -53,6 +54,7 @@ typedef struct s_vars
 	int		ex;
 	int		ey;
 	char	**map;
+	int side;
 }	t_vars;
 
 typedef struct s_print

@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 15:37:27 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/10 15:55:04 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/11 14:27:20 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <mlx.h>
 # include <fcntl.h>
+# include <stdarg.h>
 
 char	*ft_strjoin(char	*s1, char *s2);
 char	*get_next_line(int fd);
@@ -44,6 +45,9 @@ typedef struct s_vars
 	void	*c;
 	void	*w;
 	void	*g;
+	void	*k;
+	void	*ded;
+	void	*game;
 	int		x;
 	int		y;
 	int		coin;
@@ -53,8 +57,10 @@ typedef struct s_vars
 	int		py;
 	int		ex;
 	int		ey;
+	int		al;
 	char	**map;
-	int side;
+	int 	side;
+	int 	moves;
 }	t_vars;
 
 typedef struct s_print
@@ -68,5 +74,6 @@ typedef struct s_print
 void	print_map(t_vars	*mlx);
 int		check_map(int fd, t_vars *mlx);
 int		mouvement(int keycode, t_vars *mlx);
+void	ft_printf(const char *s, ...);
 
 #endif

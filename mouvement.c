@@ -6,18 +6,36 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:56:46 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/10 16:02:03 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/11 14:55:04 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
+void	met_ennemy(char c, t_vars *m)
+{
+	int	x;
+	int	y;
+	
+	x = (m->wi / 2 * 100) - 150;
+	y = (m->h / 2 * 100) - 74;
+	if(c == 'K')
+	{
+		m->al = 0;
+		mlx_put_image_to_window(m->ptr, m->win, m->g, m->px, m->py);
+		mlx_put_image_to_window(m->ptr, m->win, m->ded, m->px, m->py - 15);
+		mlx_put_image_to_window(m->ptr, m->win, m->game, x, y);
+	}
+}
+
 static void	move1(int keycode, t_vars *m, int i, int j)
 {
-	if (keycode == 123)
+	if (keycode == 0)
 	{
-		if (m->map[i][j - 1] != '1' && m->map[i][j - 1] != 'E')
+		if (m->map[i][j - 1] != '1' && m->map[i][j - 1] != 'E' && m->al == 1)
 		{
+			m->moves++;
+			ft_printf("you made the move number : %d\n", m->moves);
 			m->side = -1;
 			mlx_put_image_to_window(m->ptr, m->win, m->g, m->px, m->py);
 			m->px -= 100;
@@ -28,6 +46,7 @@ static void	move1(int keycode, t_vars *m, int i, int j)
 			}
 			mlx_put_image_to_window(m->ptr, m->win, m->g, m->px, m->py);
 			mlx_put_image_to_window(m->ptr, m->win, m->pl, m->px + 20, m->py);
+			met_ennemy(m->map[i][j - 1], m);
 		}
 		if (m->ex == m->px && m->ey == m->py && m->coin == 0)
 			exit (0);
@@ -36,10 +55,12 @@ static void	move1(int keycode, t_vars *m, int i, int j)
 
 static void	move2(int keycode, t_vars *m, int i, int j)
 {
-	if (keycode == 124)
+	if (keycode == 2)
 	{
-		if (m->map[i][j + 1] != '1' && m->map[i][j + 1] != 'E')
+		if (m->map[i][j + 1] != '1' && m->map[i][j + 1] != 'E' && m->al == 1)
 		{
+			m->moves++;
+			ft_printf("you made the move number : %d\n", m->moves);
 			m->side = 1;
 			mlx_put_image_to_window(m->ptr, m->win, m->g, m->px, m->py);
 			m->px += 100;
@@ -50,6 +71,7 @@ static void	move2(int keycode, t_vars *m, int i, int j)
 			}
 			mlx_put_image_to_window(m->ptr, m->win, m->g, m->px, m->py);
 			mlx_put_image_to_window(m->ptr, m->win, m->p, m->px + 15, m->py);
+			met_ennemy(m->map[i][j + 1], m);
 		}
 		if (m->ex == m->px && m->ey == m->py && m->coin == 0)
 			exit (0);
@@ -58,10 +80,12 @@ static void	move2(int keycode, t_vars *m, int i, int j)
 
 static void	move3(int keycode, t_vars *m, int i, int j)
 {
-	if (keycode == 125)
+	if (keycode == 1)
 	{
-		if (m->map[i + 1][j] != '1' && m->map[i + 1][j] != 'E')
+		if (m->map[i + 1][j] != '1' && m->map[i + 1][j] != 'E' && m->al == 1)
 		{
+			m->moves++;
+			ft_printf("you made the move number : %d\n", m->moves);
 			mlx_put_image_to_window(m->ptr, m->win, m->g, m->px, m->py);
 			m->py += 100;
 			if (m->map[i + 1][j] == 'C')
@@ -74,6 +98,7 @@ static void	move3(int keycode, t_vars *m, int i, int j)
 				mlx_put_image_to_window(m->ptr, m->win, m->pl, m->px + 20, m->py);
 			else
 				mlx_put_image_to_window(m->ptr, m->win, m->p, m->px + 15, m->py);
+			met_ennemy(m->map[i + 1][j], m);
 		}
 		if (m->ex == m->px && m->ey == m->py && m->coin == 0)
 			exit (0);
@@ -82,10 +107,12 @@ static void	move3(int keycode, t_vars *m, int i, int j)
 
 static void	move4(int keycode, t_vars *m, int i, int j)
 {
-	if (keycode == 126)
+	if (keycode == 13)
 	{
-		if (m->map[i - 1][j] != '1' && m->map[i - 1][j] != 'E')
+		if (m->map[i - 1][j] != '1' && m->map[i - 1][j] != 'E' && m->al == 1)
 		{	
+			m->moves++;
+			ft_printf("you made the move number : %d\n", m->moves);
 			mlx_put_image_to_window(m->ptr, m->win, m->g, m->px, m->py);
 			m->py -= 100;
 			if (m->map[i - 1][j] == 'C')
@@ -98,6 +125,7 @@ static void	move4(int keycode, t_vars *m, int i, int j)
 				mlx_put_image_to_window(m->ptr, m->win, m->pl, m->px + 20, m->py);
 			else
 				mlx_put_image_to_window(m->ptr, m->win, m->p, m->px + 15, m->py);
+			met_ennemy(m->map[i - 1][j], m);
 		}
 		if (m->ex == m->px && m->ey == m->py && m->coin == 0)
 			exit (0);

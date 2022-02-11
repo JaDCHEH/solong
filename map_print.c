@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 13:43:30 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/10 13:43:34 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/11 14:18:36 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ void	print_map(t_vars *m)
 		while (m->map[map.i][map.j])
 		{
 			loop(m, &map);
+			if (m->map[map.i][map.j] == 'K')
+			{
+				mlx_put_image_to_window(m->ptr, m->win, m->g, map.x, map.y);
+				mlx_put_image_to_window(m->ptr, m->win, m->k, map.x, map.y);
+			}
 			map.x += 100;
 			map.j++;
 		}

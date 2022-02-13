@@ -6,11 +6,11 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:09:45 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/07 16:11:17 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/13 17:05:43 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "../solong.h"
 
 char	*ft_strchr(const char	*s, int c)
 {

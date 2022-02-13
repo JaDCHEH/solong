@@ -6,11 +6,11 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:42 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/12 20:41:11 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/13 17:29:37 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "../solong.h"
 
 void	check_1(char	*s)
 {
@@ -41,7 +41,7 @@ void	check_line(char	*s, int a)
 	while (s[i])
 	{
 		if (s[i] != 'C' && s[i] != 'E' && s[i] != 'P'
-			&& s[i] != '0' && s[i] != '1' && s[i] != 'K')
+			&& s[i] != '0' && s[i] != '1')
 		{
 			ft_printf("Error\nunkown ellement in the map.\n");
 			exit (0);
@@ -70,8 +70,6 @@ int	check_elements(char	*s, int a, t_vars *mlx)
 		}
 		if (s[i] == 'E')
 			e = 5;
-		if (s[i] == 'K')
-			mlx->ennum++;
 		i++;
 	}
 	return (1 + p + c + e);
@@ -100,7 +98,6 @@ int	check_map(int fd, t_vars	*mlx)
 	t_map	map;
 
 	mlx->coin = 0;
-	mlx->ennum = 0;
 	map.s1 = get_next_line(fd);
 	map.s2 = NULL;
 	map.a = ft_strlen(map.s1);

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solong.h                                           :+:      :+:    :+:   */
+/*   solong_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 15:37:27 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/13 17:34:35 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/13 19:20:29 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SOLONG_H
-# define SOLONG_H
+#ifndef SOLONG_BONUS_H
+# define SOLONG_BONUS_H
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -46,6 +46,9 @@ typedef struct s_vars
 	void	*c;
 	void	*w;
 	void	*g;
+	void	*k;
+	void	*ded;
+	void	*game;
 	int		flag;
 	int		x;
 	int		y;
@@ -56,6 +59,9 @@ typedef struct s_vars
 	int		py;
 	int		ex;
 	int		ey;
+	int		al;
+	int		ennum;
+	int		**enemy;
 	char	**map;
 	int		side;
 	int		moves;
@@ -74,6 +80,17 @@ int		check_map(int fd, t_vars *mlx);
 int		movement(int keycode, t_vars *mlx);
 void	ft_printf(const char *s, ...);
 void	side_check(t_vars *m);
+void	met_enemy(char c, t_vars *m);
+void	number_of_moves(t_vars	*m);
 void	height_width(t_vars *mlx, char *av);
+void	enemy(t_vars *mlx);
+void	enemy_move1(t_vars	*m, int i);
+void	enemy_move2(t_vars	*m, int i);
+void	enemy_move3(t_vars	*m, int i);
+void	enemy_move4(t_vars	*m, int i);
+void	enemy_move5(t_vars	*m, int i, int a);
+void	enemy_move6(t_vars	*m, int i, int a);
+int		enemy_moves(t_vars	*mlx, int i, int x, int y);
+int		no_move(t_vars	*m, int *i);
 
 #endif

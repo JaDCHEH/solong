@@ -6,11 +6,11 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:23:18 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/10 19:38:46 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/13 17:05:34 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "../solong.h"
 
 static int	ft_putchar(char c)
 {

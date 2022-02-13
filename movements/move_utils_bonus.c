@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_utils.c                                       :+:      :+:    :+:   */
+/*   move_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 20:46:20 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/12 20:47:52 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/13 17:37:20 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "../solong_bonus.h"
 
 void	side_check(t_vars *m)
 {
@@ -20,7 +20,7 @@ void	side_check(t_vars *m)
 		mlx_put_image_to_window(m->ptr, m->win, m->p, m->px + 15, m->py);
 }
 
-void	met_ennemy(char c, t_vars *m)
+void	met_enemy(char c, t_vars *m)
 {
 	int	x;
 	int	y;
@@ -82,28 +82,4 @@ void	height_width(t_vars *mlx, char *av)
 		free(s);
 		s = get_next_line(fd);
 	}
-}
-
-int	no_move(t_vars	*m, int i)
-{
-	int	a;
-	int	x;
-	int	y;
-
-	x = m->ennemy[i][0];
-	y = m->ennemy[i][1];
-	a = 0;
-	if (m->map[y + 1][x] != '1' && m->map[y + 1][x] != 'E'
-		&& m->map[y + 1][x] != 'C' && m->map[y + 1][x] != 'K')
-		a++;
-	if (m->map[y - 1][x] != '1' && m->map[y - 1][x] != 'E'
-		&& m->map[y - 1][x] != 'C' && m->map[y - 1][x] != 'K')
-		a++;
-	if (m->map[y][x + 1] != '1' && m->map[y][x + 1] != 'E'
-		&& m->map[y][x + 1] != 'C' && m->map[y][x + 1] != 'K')
-		a++;
-	if (m->map[y][x - 1] != '1' && m->map[y][x - 1] != 'E'
-		&& m->map[y][x - 1] != 'C' && m->map[y][x - 1] != 'K')
-		a++;
-	return (a);
 }

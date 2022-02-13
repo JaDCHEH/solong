@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solong.c                                           :+:      :+:    :+:   */
+/*   solong_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:31:03 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/13 17:29:12 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/13 19:21:50 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 void	map(t_vars *mlx, char	*av)
 {
@@ -24,7 +24,7 @@ void	map(t_vars *mlx, char	*av)
 		perror("Error\n");
 		exit(0);
 	}
-	mlx->map = (char **) malloc (sizeof (char *) * mlx->h + 1);
+	mlx->map = (char **) malloc (sizeof(char *) * (mlx->h + 1));
 	while (i < mlx->h)
 	{
 		mlx->map[i] = get_next_line(fd);
@@ -34,8 +34,22 @@ void	map(t_vars *mlx, char	*av)
 	close(fd);
 }
 
+void	ennemy_pos(t_vars	*mlx)
+{
+	int	i;
+
+	i = 0;
+	while (i < mlx->ennum)
+	{
+		mlx->enemy[i] = (int *) malloc (sizeof(int) * 2);
+		i++;
+	}
+	mlx->enemy[i] = NULL;
+}
+
 void	variables(t_vars	*mlx)
 {
+	mlx->al = 1;
 	mlx->moves = 0;
 	mlx->flag = 1;
 	mlx->g = mlx_xpm_file_to_image(mlx->ptr, "./e/grass.xpm", &mlx->x, &mlx->y);
@@ -45,6 +59,13 @@ void	variables(t_vars	*mlx)
 	mlx->pl = mlx_xpm_file_to_image(mlx->ptr, "./e/xiol.xpm", &mlx->x, &mlx->y);
 	mlx->e = mlx_xpm_file_to_image(mlx->ptr, "./e/dc.xpm", &mlx->x, &mlx->y);
 	mlx->ne = mlx_xpm_file_to_image(mlx->ptr, "./e/do.xpm", &mlx->x, &mlx->y);
+	mlx->k = mlx_xpm_file_to_image(mlx->ptr, "./e/enemy.xpm", &mlx->x, &mlx->y);
+	mlx->ded = mlx_xpm_file_to_image(mlx->ptr, "./e/d.xpm", &mlx->x, &mlx->y);
+	mlx->game = mlx_xpm_file_to_image(mlx->ptr, "./e/g.xpm", &mlx->x, &mlx->y);
+	mlx->enemy = (int **) malloc (sizeof(int *) * (mlx->ennum + 1));
+	if (!mlx->enemy)
+		exit(0);
+	ennemy_pos(mlx);
 }
 
 void	solong(char **av)

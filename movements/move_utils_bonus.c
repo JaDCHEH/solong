@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 20:46:20 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/13 17:37:20 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/14 15:08:10 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ void	number_of_moves(t_vars	*m)
 	int		x;
 
 	temp = ft_strdup("Moves x ");
-	x = m->wi * 100 - 100;
+	x = m->wi * 50;
 	number = ft_itoa(m->moves);
 	str = ft_strjoin(temp, number);
 	mlx_clear_window(m->ptr, m->win);
 	print_map(m);
-	mlx_string_put(m->ptr, m->win, x, 50, 0xFF0000, str);
+	mlx_string_put(m->ptr, m->win, x, 50, 0xFFFFFF, str);
 	free(temp);
 	free(str);
 	free(number);

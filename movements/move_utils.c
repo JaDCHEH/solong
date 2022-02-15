@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 20:46:20 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/13 17:36:50 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/15 17:22:00 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,28 @@ void	side_check(t_vars *m)
 		mlx_put_image_to_window(m->ptr, m->win, m->pl, m->px + 20, m->py);
 	else
 		mlx_put_image_to_window(m->ptr, m->win, m->p, m->px + 15, m->py);
+}
+
+void	won(t_vars *m)
+{
+	int	x;
+	int	y;
+
+	x = (m->wi / 2 * 100) - 125;
+	y = (m->h / 2 * 100) - 35;
+	m->won = 1;
+	mlx_put_image_to_window(m->ptr, m->win, m->gw, x, y);
+}
+
+int	loop_hook(t_vars *mlx)
+{	
+	if (mlx->won == 1)
+	{
+		if (mlx->kk == 5000)
+			exit(0);
+		mlx->kk++;
+	}
+	return (0);
 }
 
 void	height_width(t_vars *mlx, char *av)
@@ -47,4 +69,10 @@ void	height_width(t_vars *mlx, char *av)
 		free(s);
 		s = get_next_line(fd);
 	}
+}
+
+int	ft_close(void)
+{
+	exit (0);
+	return (0);
 }

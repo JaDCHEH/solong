@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 15:37:27 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/13 17:34:35 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/15 17:20:12 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ typedef struct s_vars
 	void	*ne;
 	void	*c;
 	void	*w;
+	void	*gw;
 	void	*g;
 	int		flag;
+	int		won;
+	int		kk;
 	int		x;
 	int		y;
 	int		coin;
@@ -75,5 +78,8 @@ int		movement(int keycode, t_vars *mlx);
 void	ft_printf(const char *s, ...);
 void	side_check(t_vars *m);
 void	height_width(t_vars *mlx, char *av);
+void	won(t_vars *m);
+int		loop_hook(t_vars *mlx);
+int		ft_close(void);
 
 #endif

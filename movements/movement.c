@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:56:46 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/13 17:39:04 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/15 16:15:20 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	move1(int keycode, t_vars *m, int i, int j)
 			m->map[i][j - 1] = 'P';
 		}
 		if (m->ex == m->px && m->ey == m->py && m->coin == 0)
-			exit (0);
+			won(m);
 	}
 }
 
@@ -60,7 +60,7 @@ static void	move2(int keycode, t_vars *m, int i, int j)
 			m->map[i][j + 1] = 'P';
 		}
 		if (m->ex == m->px && m->ey == m->py && m->coin == 0)
-			exit (0);
+			won(m);
 	}
 }
 
@@ -85,7 +85,7 @@ static void	move3(int keycode, t_vars *m, int i, int j)
 			m->map[i + 1][j] = 'P';
 		}
 		if (m->ex == m->px && m->ey == m->py && m->coin == 0)
-			exit (0);
+			won(m);
 	}
 }
 
@@ -110,7 +110,7 @@ static void	move4(int keycode, t_vars *m, int i, int j)
 			m->map[i - 1][j] = 'P';
 		}
 		if (m->ex == m->px && m->ey == m->py && m->coin == 0)
-			exit (0);
+			won(m);
 	}
 }
 

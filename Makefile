@@ -1,8 +1,8 @@
-NAME = solong
+NAME = so_long
 
-NAME_BONUS = solong_bonus
+NAME_BONUS = so_long_bonus
 
-CC = @cc -lmlx -framework OpenGL -framework AppKit -fsanitize=address
+CC = @cc -lmlx -framework OpenGL -framework AppKit
 
 FLAGS = -Wall -Wextra -Werror 
 
@@ -17,6 +17,7 @@ B_FILES = ./map_utils/check_map_bonus.c \
 			./utils/ft_printf.c \
 			./movements/move_utils_bonus.c \
 			./utils/ft_itoa.c \
+			./utils/utils_bonus.c \
 			./enemy_utils/enemy_bonus.c \
 			./enemy_utils/enemy_1_bonus.c \
 
@@ -42,21 +43,23 @@ C_RES = \033[0m
 all : $(NAME)
 
 $(NAME) : $(C_FILES) 
-	@echo "$(C_GREEN)["solong" CREATED]$(C_RES)"
+	@echo "$(C_GREEN)["so_long" CREATED]$(C_RES)"
 	$(CC) $(FLAGS) $(C_FILES) $(N_FLAG) $(NAME)
 
 bonus : $(NAME_BONUS)
 
 $(NAME_BONUS) : $(B_FILES)
-	@echo "$(C_L_BLUE)["solong" BONUS CREATED]$(C_RES)"
+	@echo "$(C_L_BLUE)["so_long" BONUS CREATED]$(C_RES)"
 	$(CC) $(FLAGS) $(B_FILES) $(N_FLAG) $(NAME_BONUS)
 
 clean :
-	@echo "$(C_PURPLE)["solong" REMOVED]$(C_RES)"
+	@echo "$(C_PURPLE)["so_long" REMOVED]$(C_RES)"
 	$(RM) $(NAME)
 
 fclean :
-	@echo "$(C_PURPLE)["solong" BONUS REMOVED]$(C_RES)"
+	@echo "$(C_PURPLE)["so_long" REMOVED]$(C_RES)"
+	$(RM) $(NAME)
+	@echo "$(C_PURPLE)["so_long" BONUS REMOVED]$(C_RES)"
 	$(RM) $(NAME_BONUS)
 
 re : clean all

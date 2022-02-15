@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 15:37:27 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/13 19:20:29 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/15 19:07:54 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,17 @@ typedef struct s_vars
 	void	*c;
 	void	*w;
 	void	*g;
+	void	*gw;
 	void	*k;
 	void	*ded;
 	void	*game;
+	void	*sx;
+	void	*sa;
 	int		flag;
+	int		bb;
+	int		kk;
+	int		hh;
+	int		ww;
 	int		x;
 	int		y;
 	int		coin;
@@ -60,6 +67,7 @@ typedef struct s_vars
 	int		ex;
 	int		ey;
 	int		al;
+	int		won;
 	int		ennum;
 	int		**enemy;
 	char	**map;
@@ -80,7 +88,7 @@ int		check_map(int fd, t_vars *mlx);
 int		movement(int keycode, t_vars *mlx);
 void	ft_printf(const char *s, ...);
 void	side_check(t_vars *m);
-void	met_enemy(char c, t_vars *m);
+void	met_enemy(char c, t_vars *m, int a);
 void	number_of_moves(t_vars	*m);
 void	height_width(t_vars *mlx, char *av);
 void	enemy(t_vars *mlx);
@@ -92,5 +100,8 @@ void	enemy_move5(t_vars	*m, int i, int a);
 void	enemy_move6(t_vars	*m, int i, int a);
 int		enemy_moves(t_vars	*mlx, int i, int x, int y);
 int		no_move(t_vars	*m, int *i);
+void	won(t_vars *m);
+int		loop_hook(t_vars *mlx);
+int		ft_close(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:31:03 by cjad              #+#    #+#             */
-/*   Updated: 2022/02/14 16:43:31 by cjad             ###   ########.fr       */
+/*   Updated: 2022/02/15 18:33:21 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	variables(t_vars	*mlx)
 	mlx->k = mlx_xpm_file_to_image(mlx->ptr, "./e/enemy.xpm", &mlx->x, &mlx->y);
 	mlx->ded = mlx_xpm_file_to_image(mlx->ptr, "./e/d.xpm", &mlx->x, &mlx->y);
 	mlx->game = mlx_xpm_file_to_image(mlx->ptr, "./e/g.xpm", &mlx->x, &mlx->y);
+	mlx->sa = mlx_xpm_file_to_image(mlx->ptr, "./e/sa.xpm", &mlx->x, &mlx->y);
+	mlx->sx = mlx_xpm_file_to_image(mlx->ptr, "./e/sx.xpm", &mlx->x, &mlx->y);
 	mlx->enemy = (int **) malloc (sizeof(int *) * (mlx->ennum + 1));
 	if (!mlx->enemy)
 		exit(0);
@@ -74,11 +76,20 @@ void	solong(char **av)
 
 	height_width(&mlx, av[1]);
 	map(&mlx, av[1]);
+	mlx.won = 0;
+	mlx.kk = 0;
+	mlx.hh = 0;
+	mlx.bb = 15;
+	mlx.ww = 0;
 	mlx.ptr = mlx_init();
 	mlx.win = mlx_new_window(mlx.ptr, mlx.wi * 100, mlx.h * 100, "so long");
+	mlx.gw = mlx_xpm_file_to_image(mlx.ptr, "./e/gw.xpm", &mlx.x, &mlx.y);
 	variables(&mlx);
 	print_map(&mlx);
+	number_of_moves(&mlx);
+	mlx_loop_hook(mlx.ptr, loop_hook, &mlx);
 	mlx_key_hook(mlx.win, movement, &mlx);
+	mlx_hook(mlx.win, 17, 0, ft_close, &mlx);
 	mlx_loop(mlx.ptr);
 }
 
